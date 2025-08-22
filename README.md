@@ -62,14 +62,37 @@ spring.datasource.password=your_password
 ```
 
 ### Running the Application
+
+#### Local Development (Recommended for testing)
 1. Clone the repository
 2. Navigate to the project directory
-3. Run the application:
+3. Run the application with development profile:
+
+**Windows:**
 ```bash
-mvn spring-boot:run
+run-local.bat
 ```
 
-The application will start on `http://localhost:8082`
+**Unix/Linux/Mac:**
+```bash
+chmod +x run-local.sh
+./run-local.sh
+```
+
+**Manual:**
+```bash
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
+```
+
+The application will start on `http://localhost:8080` with H2 in-memory database.
+
+#### Production (with PostgreSQL)
+1. Set up PostgreSQL database
+2. Configure environment variables
+3. Run with production profile:
+```bash
+mvn spring-boot:run -Dspring-boot.run.profiles=production
+```
 
 ## 📚 API Documentation
 
@@ -213,6 +236,24 @@ Run tests with:
 ```bash
 mvn test
 ```
+
+## 🚀 Deployment
+
+### Docker (Recommended)
+```dockerfile
+FROM openjdk:17-jdk-slim
+COPY target/url-shortener-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+```
+
+### Traditional Deployment
+1. Build the JAR: `mvn clean package`
+2. Run: `java -jar target/url-shortener-0.0.1-SNAPSHOT.jar`
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
 
 ## 🤝 Contributing
 

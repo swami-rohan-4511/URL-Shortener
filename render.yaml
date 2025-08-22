@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: url-shortener
+    env: docker
+    plan: free
+    region: oregon
+    buildCommand: echo "Building with Docker..."
+    startCommand: echo "Starting with Docker..."
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      - key: SERVER_PORT
+        value: 8080
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: url-shortener-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: url-shortener-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: url-shortener-db
+          property: password
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
+      - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+        value: org.hibernate.dialect.PostgreSQLDialect
+
+databases:
+  - name: url-shortener-db
+    databaseName: urlshortener
+    user: urlshortener
+    plan: free
+    region: oregon
