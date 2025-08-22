@@ -1,0 +1,37 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+
+# Logs
+logs/
+*.log
+*.pid
+
+# Java/Maven
+target/
+**/*.class
+hs_err_pid*
+.springBeans
+.sts4-cache/
+
+# JARs (ignore built artifacts)
+*.jar
+*.war
+*.ear
+
+# Spring config
+!src/main/resources/application.properties
+application-*.properties
+application-*.yml
+
+# Maven wrapper
+!/.mvn/wrapper/maven-wrapper.jar
+

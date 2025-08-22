@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>URL Shortener</h1>
+    <form id="shortenForm">
+      <input id="url" placeholder="Paste long URL" required />
+      <input id="days" type="number" min="0" placeholder="Expiry (days)" />
+      <button>Shorten</button>
+    </form>
+    <section>
+      <h2>Recent Links</h2>
+      <table id="links"><thead><tr><th>Code</th><th>Target</th><th>Clicks</th><th>Actions</th></tr></thead><tbody></tbody></table>
+    </section>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>
+
+
