@@ -7,7 +7,6 @@ WORKDIR /app
 # Copy the Maven wrapper and pom.xml
 COPY mvnw .
 COPY .mvn .mvn
-COPY .mvn/wrapper/maven-wrapper.jar .mvn/wrapper/
 COPY pom.xml .
 
 # Make mvnw executable
